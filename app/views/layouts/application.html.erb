@@ -15,6 +15,55 @@
   </head>
 
   <body>
+  <% if session.fetch(:user_id).present? %>
+  <nav>
+    <ul>
+     <li>
+        <a href="/users">All users</a>
+      </li>
+      <li>
+        <a href="/photos">All public photos</a>
+      </li>
+      <li>
+        <a href="/user_sign_in">Edit profile</a>
+      </li>
+      <li>
+        <a href="/user_sign_out">Sign Out </a>
+      </li>
+    </ul>
+  </nav>
+<% else %>
+<nav>
+    <ul>
+     <li>
+        <a href="/users">All users</a>
+      </li>
+      <li>
+        <a href="/photos">All public photos</a>
+      </li>
+      <li>
+        <a href="/user_sign_in">Sign In</a>
+      </li>
+      <li>
+        <a href="/user_sign_up">Sign Up</a>
+      </li>
+    </ul>
+  </nav>
+  <% end %>
+
+
+<% if notice.present? %>
+<div style="border: thin green solid">
+<%= notice %>
+</div>
+<% end %>
+
+<%if alert.present? %>
+<div style="border: thin red solid">
+<%= alert %>
+</div>
+<%end%>
+
     <%= yield %>
-  </body>
+</body>
 </html>
